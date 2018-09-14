@@ -1,14 +1,16 @@
 import React, {Component} from 'react'
+import Book from './Book.js'
+import {Link} from 'react-router-dom'
+
 
 class AllBooks extends Component {
   render() {
     return(
+      //start of bookpage
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-          
-             {/* Start of Bookshelf */}
             <div className="list-books-content">
               <div>
 
@@ -17,8 +19,8 @@ class AllBooks extends Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                       
-                      {/* Start of Book 
+      
+                      {/* Start of Book <Book />
                       <li>
                         <div className="book">
                           <div className="book-top">
@@ -169,7 +171,11 @@ class AllBooks extends Component {
               </div>
             </div>
             <div className="open-search">
+              {/*
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              */}
+              <Link to="/search">Add a book</Link>
+              
             </div>
           </div>
     )
