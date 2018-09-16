@@ -20,7 +20,8 @@ class BooksApp extends Component {
     //showSearchPage: false
   }
 
-//* Temp code to see BooksAPI data available
+// State above and BooksAPI call code direction from Udacity video lessons
+// This will call the API.getAll method. Books put into the array and update the state
   componentDidMount() {
    BooksAPI.getAll().then((books) => {
      this.setState({books});
@@ -30,16 +31,14 @@ class BooksApp extends Component {
 
   render() {
     
-    const books = BooksAPI;
-    
     return (
       <div className="app">
-        <Route path="/" exact render={() => (
+        <Route exact path="/" render={() => (
           <AllBooks books = {this.state.books}/>
         )}/>
 
        <Route path="/search" render={() => (
-          <SearchPage books = {books}/>
+          <SearchPage books = {this.books}/>
         )}/>
       </div>
     )
@@ -67,5 +66,5 @@ render() {
       </div>
     )
   }
-  
+
   */
