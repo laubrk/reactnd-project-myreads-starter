@@ -22,19 +22,28 @@ class BooksApp extends Component {
 
 // State above and BooksAPI call code direction from Udacity video lessons
 // This will call the API.getAll method. Books put into the array and update the state
-  componentDidMount() {
+  componentDidMount = () => {
    BooksAPI.getAll().then((books) => {
      this.setState({books});
      console.log(books);
    })
  }
 
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book,shelf).then((book, shelf) => {
+    this.setState({book, shelf});
+    })
+    }
+
+
   render() {
     
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <AllBooks books = {this.state.books}/>
+          <AllBooks books = {this.state.books}
+          moveBook = {this.moveBook}
+          />
         )}/>
 
        <Route path="/search" render={() => (
@@ -65,6 +74,11 @@ render() {
         )}
       </div>
     )
+  }
+
+moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    console.log(book)
   }
 
   */
