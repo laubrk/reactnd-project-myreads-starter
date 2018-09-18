@@ -25,17 +25,30 @@ class BooksApp extends Component {
   componentDidMount = () => {
    BooksAPI.getAll().then((books) => {
      this.setState({books});
-     console.log(books);
+     //console.log(books);
    })
  }
-
+// Based on suggested approach from @Macrunning in Slack.
+// Avoids .then on BooksAPI.update due to async promise and to update site right away.
+// Alternative method in comments also works but is .then approach.
   moveBook = (book, shelf) => {
-    BooksAPI.update(book,shelf).then((book, shelf) => {
-    this.setState({book, shelf});
-    })
-    }
-
-
+    BooksAPI.update(book,shelf);
+    
+    const bookIndex = this.state.books.findIndex (
+      oldBook => oldBook.id === book.id
+    );
+    
+    console.log(bookIndex)
+    
+    if (bookIndex !== -1) {
+      const newBook = Object.assign({}, this.state.books);
+        console.log(this.state.books);
+        console.log(newBook);
+        newBook[bookIndex].shelf = shelf;
+        this.setState({newBook})
+    };
+  }
+    
   render() {
     
     return (
@@ -76,9 +89,46 @@ render() {
     )
   }
 
+Some alternate work on moveBook function
+
 moveBook = (book, shelf) => {
-    BooksAPI.update(book, shelf)
-    console.log(book)
+    BooksAPI.update(book,shelf).then((book, shelf) => {
+    this.setState({book, shelf});
+    })
+     BooksAPI.update(book, shelf);
+    
+    const bookIndex = this.state.books.findIndex (
+      oldBook => oldBook.id === book.id
+    );
+    console.log(bookIndex)
   }
+
+works:
+moveBook = (book, shelf) => {
+    BooksAPI.update(book,shelf)
+      .then((books) => BooksAPI.getAll(books))
+      .then(books => this.setState({books})
+    )}
+
+works:
+moveBook = (book, shelf) => {
+    BooksAPI.update(book,shelf);
+    
+    const bookIndex = this.state.books.findIndex (
+      oldBook => oldBook.id === book.id
+    );
+   
+    if (bookIndex !== -1)
+       {this.setState({book});
+  } else {
+    //this.setState(newState => ({
+      //newState.books
+    //}));
+  }
+   BooksAPI.getAll().then(books => this.setState({books}));
+    //const newState = bookIndex;
+    console.log(bookIndex)
+  };
+
 
   */
