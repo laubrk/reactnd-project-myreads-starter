@@ -43,15 +43,3 @@ class Book extends Component {
 }
 
 export default Book
-
-{/* Was directly under book-shelf-changer
-
-<select>
-  <option value="move" disabled>Move to...</option>
-  <option value="currentlyReading">Currently Reading</option>
-  <option value="wantToRead">Want to Read</option>
-  <option value="read">Read</option>
-  <option value="none">None</option>
-</select>
-
-*/}
