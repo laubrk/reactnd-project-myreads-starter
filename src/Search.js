@@ -51,12 +51,21 @@ class SearchPage extends Component {
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-              {this.state.booksSearched.map(booksSearched => (
-                <li key={booksSearched.id}>
-                  <Book book={booksSearched} moveBook={this.props.moveBook}/>
-                </li>
-              ))}
-              </ol>
+              {/*Suggestion/assistance from @Forrest on Slack for setting current shelf: "map over each book in the search books. Find any matches and then set a new property called . shelf and set the same shelf from the book found from this.props.books"*/}
+              {this.state.booksSearched.map(booksSearched => {
+                let shelf = "none"
+                this.props.books.map(book => (
+                  book.id===booksSearched.id ? 
+                  shelf = book.shelf: ""
+                ))
+                return (
+                  <li key={booksSearched.id}>
+                    <Book book={booksSearched} moveBook={this.props.moveBook} currentShelf = {shelf}/>
+                  </li>
+                )
+              })
+              }
+            </ol>
           </div>
         </div>
       //end of search page

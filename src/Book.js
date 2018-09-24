@@ -26,7 +26,7 @@ class Book extends Component {
         https://stackoverflow.com/questions/21733847/react-jsx-selecting-selected-on-selected-select-option
         */}
       
-        <select onChange={this.change} value={this.props.book.shelf}>
+        <select onChange={this.change} value={this.props.currentShelf}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
