@@ -9,7 +9,7 @@ The original Udacity instructions were provided in [README_PROJECT.md](README_PR
 
 The functionality of the app, Rubic and general code approach can be found in [APPROACH.md](APPROACH.md).
 
-<img width="750px" alt="MyReads Project" src="/readme-homepage.jpg">
+<img width="750px" alt="MyReads Project" src="/readme_image.jpg">
 
 #### Running the Site
 
