@@ -17,7 +17,6 @@ class SearchPage extends Component {
   }
 
   /* Reference to solve issue of errors on query: https://gwgnanodegrees.slack.com/archives/CABSA50KA/p1537371946000100?thread_ts=1537371666.000100&cid=CABSA50KA */
-  
   /* Reference to address search API and set state for render function: Udacity Building with React, Lesson 3: State Management, Concept 7: Controlled Components */
   
   getBooksSearched = (query) => {

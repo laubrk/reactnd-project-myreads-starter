@@ -16,7 +16,7 @@ class BooksApp extends Component {
 // This will call the API.getAll method. Books put into the array and update the state
   componentDidMount = () => {
    BooksAPI.getAll().then((books) => {
-     this.setState({books});
+     this.setState({books})
      //console.log(books);
    })
  }
@@ -25,7 +25,6 @@ class BooksApp extends Component {
 // Alternative method in comments also works but is .then approach.
   moveBook = (book, shelf) => {
     BooksAPI.update(book,shelf);
-    
     const bookIndex = this.state.books.findIndex (
       oldBook => oldBook.id === book.id
     );
@@ -34,15 +33,14 @@ class BooksApp extends Component {
     
     if (bookIndex !== -1) {
       const newBook = Object.assign({}, this.state.books);
-        console.log(this.state.books);
-        console.log(newBook);
+        //console.log(this.state.books);
+        //console.log(newBook);
         newBook[bookIndex].shelf = shelf;
         this.setState({newBook})
-    };
+    }
   }
     
   render() {
-    
     return (
       <div className="app">
         <Route exact path="/" render={() => (
