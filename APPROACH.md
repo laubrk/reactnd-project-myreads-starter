@@ -29,11 +29,8 @@
   - Goes to main page.
   - URL in browser's address bar is /.
   
-#### Component Ideas
+#### Components
 1. App - get all books via API
-2. Main - shows all shelves
-3. Books - shows book image and meta data
-4. Move - move books to different shelves
-5. Search - perform all search functions
-
-Open: Where to manage state?
+2. Books - shows book image and meta data
+3. Move - move books to different shelves
+4. Search - perform all search functions
